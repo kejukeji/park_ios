@@ -358,6 +358,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TingCheBao/Class/Lib",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TingCheBao/TingCheBao-Prefix.pch";
 				INFOPLIST_FILE = "TingCheBao/TingCheBao-Info.plist";
@@ -371,6 +375,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TingCheBao/Class/Lib",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TingCheBao/TingCheBao-Prefix.pch";
 				INFOPLIST_FILE = "TingCheBao/TingCheBao-Info.plist";
@@ -438,6 +446,7 @@
 				FED22F2E190E911200277079 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FED22F2F190E911200277079 /* Build configuration list for PBXNativeTarget "TingCheBaoTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +455,7 @@
 				FED22F31190E911200277079 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
