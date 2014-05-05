@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="OeO-xY-g3o">
+    <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="ccb-a4-XfN">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="OeO-xY-g3o" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MAn-lC-7wk">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="aIo-7t-qQ1" kind="relationship" relationship="rootViewController" id="RBe-1I-ngn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lxI-iK-6S9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-268" y="-90"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="3zu-9k-7pb">
+            <objects>
+                <viewController storyboardIdentifier="ViewController" id="aIo-7t-qQ1" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jFA-2X-SqN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wv0-Oz-MAf">
+                                <rect key="frame" x="67" y="105" width="168" height="149"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                <state key="normal" title="聊天去">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="RPX-ul-SLs" kind="push" id="vFz-3Q-plo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="X4c-aa-D9L"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ogt-tH-Qlu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="123" y="-86"/>
+        </scene>
+        <!--Voice View Controller-->
+        <scene sceneID="EJy-Bz-hgq">
+            <objects>
+                <viewController storyboardIdentifier="VoiceViewController" id="RPX-ul-SLs" customClass="VoiceViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6iT-bv-PBp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="61" sectionHeaderHeight="22" sectionFooterHeight="22" id="cCV-xm-6Ec">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="VoiceCell" rowHeight="61" id="iaw-rA-vkw" customClass="VoiceCell">
+                                        <rect key="frame" x="0.0" y="86" width="320" height="61"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iaw-rA-vkw" id="y1X-vi-JGl">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" id="h35-xX-i3U">
+                                                    <rect key="frame" x="0.0" y="0.0" width="158" height="60"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cheche.png" id="Sk9-qr-H9y">
+                                                            <rect key="frame" x="0.0" y="0.0" width="47" height="53"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="yiq-L9-Xe0">
+                                                            <rect key="frame" x="55" y="11" width="83" height="42"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EMU-lh-0uq">
+                                                            <rect key="frame" x="61" y="20" width="142" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.499497519" green="1" blue="0.19048716090000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" id="VPJ-Ki-YUR">
+                                                    <rect key="frame" x="162" y="0.0" width="158" height="60"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cheche_wen.png" id="eh4-Bf-rah">
+                                                            <rect key="frame" x="109" y="0.0" width="47" height="53"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="DTN-Lu-SzR">
+                                                            <rect key="frame" x="22" y="9" width="79" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="89k-9M-76I">
+                                                            <rect key="frame" x="35" y="20" width="142" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.89307637120000005" green="0.50917152799999998" blue="0.17932479740000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bg_image" destination="yiq-L9-Xe0" id="vT2-iF-Ydy"/>
+                                            <outlet property="bgwenwen_image" destination="DTN-Lu-SzR" id="8r5-na-G7y"/>
+                                            <outlet property="checheView" destination="h35-xX-i3U" id="u5e-0v-P6l"/>
+                                            <outlet property="cheche_image" destination="Sk9-qr-H9y" id="VzT-6K-bUB"/>
+                                            <outlet property="cheche_text" destination="EMU-lh-0uq" id="hnf-4K-m9Y"/>
+                                            <outlet property="cheche_wen_image" destination="eh4-Bf-rah" id="bIE-Af-xlG"/>
+                                            <outlet property="cheche_wen_text" destination="89k-9M-76I" id="dAG-Xx-ZoN"/>
+                                            <outlet property="cheche_wen_view" destination="VPJ-Ki-YUR" id="IHR-EX-1Xt"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="RPX-ul-SLs" id="SEt-Mx-LuS"/>
+                                    <outlet property="delegate" destination="RPX-ul-SLs" id="ggc-No-oS7"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4d5-SW-hHh">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Obs-Qg-qYm">
+                            <connections>
+                                <action selector="voiceAction:" destination="RPX-ul-SLs" id="lAM-9g-pJF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="chatTableView" destination="cCV-xm-6Ec" id="QdN-Mi-QWg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bNy-Xk-5hU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="461" y="-86"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cheche.png" width="120" height="120"/>
+        <image name="cheche_wen.png" width="120" height="120"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

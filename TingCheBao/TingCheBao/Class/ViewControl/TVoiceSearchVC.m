@@ -1,18 +1,24 @@
 //
-//  TFindParkingSpaceVC.m
+//  TVoiceSearchVC.m
 //  TingCheBao
 //
-//  Created by zhao on 14-4-28.
+//  Created by zhao on 14-5-2.
 //  Copyright (c) 2014年 zhao. All rights reserved.
 //
 
-#import "TFindParkingSpaceVC.h"
+#import "TVoiceSearchVC.h"
 
-@interface TFindParkingSpaceVC ()
+@interface TVoiceSearchVC ()
+
+@property (weak, nonatomic) IBOutlet UILabel *firstLabel;
+@property (weak, nonatomic) IBOutlet UILabel *contenLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *noBtn;
+@property (weak, nonatomic) IBOutlet UIButton *yesBtn;
 
 @end
 
-@implementation TFindParkingSpaceVC
+@implementation TVoiceSearchVC
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,13 +33,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationController.navigationBar.barStyle = UIBaselineAdjustmentNone;
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bar_bg.png"] forBarMetrics:UIBarMetricsDefault];
-//    self.navigationController.navigationBar.clipsToBounds = YES;
-//    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]){
-//        self.navigationController.edgesForExtendedLayout = UIRectEdgeNone;
-//        
-//    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,9 +52,9 @@
 }
 */
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+- (IBAction)backVoice:(id)sender
 {
-    [self.view endEditing:YES];
+    
 }
 
 @end
