@@ -10,4 +10,7 @@
 
 @interface THomePageVC : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIScrollView *homeScrollView;
+@property (strong, nonatomic) IBOutlet UIScrollView *adScrollview;
+
 @end

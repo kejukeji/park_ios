@@ -10,4 +10,29 @@
 
 @implementation TNearParkModel
 
+@synthesize address;
+@synthesize carbarnLast;
+@synthesize carbarnTotal;
+@synthesize latitude;
+@synthesize longitude;
+@synthesize detial;
+@synthesize parkid;
+@synthesize name;
+@synthesize price;
+
+- (TNearParkModel *)initWithDictionary:(NSDictionary *)dic
+{
+    if (self = [super init]) {
+        
+        
+            
+        
+        
+    }
+    
+    return self;
+
+}
+
+
 @end

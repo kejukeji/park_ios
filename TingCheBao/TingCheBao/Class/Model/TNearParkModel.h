@@ -10,9 +10,16 @@
 
 @interface TNearParkModel : NSObject
 
-@property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *address;
+@property (nonatomic, copy) NSString *carbarnLast;
+@property (nonatomic, copy) NSString *carbarnTotal;
+@property (nonatomic, copy) NSString *latitude;
+@property (nonatomic, copy) NSString *longitude;
+@property (nonatomic, copy) NSString *detial;
+@property (nonatomic, copy) NSString *parkid;
+@property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *price;
-@property (nonatomic, copy) NSString *emptyPlace;
+
+- (TNearParkModel *)initWithDictionary:(NSDictionary *)dic;
 
 @end

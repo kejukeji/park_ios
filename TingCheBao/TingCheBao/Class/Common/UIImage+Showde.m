@@ -32,12 +32,9 @@
         
         UIGraphicsEndImageContext();
         
-        
-        
         return img;
         
     }
-    
     
     
 }
