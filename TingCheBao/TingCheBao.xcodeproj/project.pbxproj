@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FE009A1D191A8AF10085DBF9 /* MyFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FE009A1C191A8AF10085DBF9 /* MyFormDataRequest.m */; };
+		FE009A1D191A8AF10085DBF9 /* MyRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FE009A1C191A8AF10085DBF9 /* MyRequest.m */; };
 		FE009A27191A8CD70085DBF9 /* CheckNewApp.m in Sources */ = {isa = PBXBuildFile; fileRef = FE009A1F191A8CD70085DBF9 /* CheckNewApp.m */; };
 		FE009A2A191A8CD70085DBF9 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = FE009A26191A8CD70085DBF9 /* Utils.m */; };
 		FE009A32191A8E390085DBF9 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FE009A2D191A8E390085DBF9 /* MBProgressHUD.m */; };
@@ -38,7 +38,6 @@
 		FE009A9B191AA8260085DBF9 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE009A9A191AA8250085DBF9 /* AddressBook.framework */; };
 		FE009A9D191AA8500085DBF9 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE009A9C191AA8500085DBF9 /* CoreBluetooth.framework */; };
 		FE009A9F191AA9E80085DBF9 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FE009A9E191AA9E80085DBF9 /* libz.1.2.5.dylib */; };
-		FE1796051913129600599FC8 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE1796041913129600599FC8 /* MainStoryboard.storyboard */; };
 		FE17960C1913173100599FC8 /* TCommonBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FE17960B1913173100599FC8 /* TCommonBar.m */; };
 		FE18CCF41913B2CF00D5E5F3 /* TNearParkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE18CCF31913B2CF00D5E5F3 /* TNearParkModel.m */; };
 		FE18CCFF1913BAB400D5E5F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FE18CCFB1913BAB400D5E5F3 /* InfoPlist.strings */; };
@@ -90,6 +89,9 @@
 		FE2A9DBB19137BA000931375 /* parkList_place_icon_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = FE2A9DB619137BA000931375 /* parkList_place_icon_orange.png */; };
 		FE2A9DBC19137BA000931375 /* parkList_place_icon_white.png in Resources */ = {isa = PBXBuildFile; fileRef = FE2A9DB719137BA000931375 /* parkList_place_icon_white.png */; };
 		FE2A9DBF191385E400931375 /* TNearParkListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2A9DBE191385E400931375 /* TNearParkListCell.m */; };
+		FE366842191F162B006102A1 /* TSearchParkingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE366841191F162B006102A1 /* TSearchParkingCell.m */; };
+		FE434243191F1CA9000F248D /* TSearchParkingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FE434242191F1CA9000F248D /* TSearchParkingVC.m */; };
+		FE434245191F1DA0000F248D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE434244191F1DA0000F248D /* MainStoryboard.storyboard */; };
 		FE702A40191AB7F5008096BC /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE702A25191AB7F5008096BC /* libzbar.a */; };
 		FE702A41191AB7F5008096BC /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = FE702A27191AB7F5008096BC /* zbar-back.png */; };
 		FE702A42191AB7F5008096BC /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = FE702A28191AB7F5008096BC /* zbar-help.html */; };
@@ -129,6 +131,7 @@
 		FED22F1E190E911200277079 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED22F03190E911200277079 /* Foundation.framework */; };
 		FED22F1F190E911200277079 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED22F07190E911200277079 /* UIKit.framework */; };
 		FED22F29190E911200277079 /* TingCheBaoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FED22F28190E911200277079 /* TingCheBaoTests.m */; };
+		FEDC22C3191DDD2F00B8F312 /* TParkingNavigateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FEDC22C2191DDD2F00B8F312 /* TParkingNavigateVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,8 +145,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FE009A1B191A8AF10085DBF9 /* MyFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFormDataRequest.h; sourceTree = "<group>"; };
-		FE009A1C191A8AF10085DBF9 /* MyFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFormDataRequest.m; sourceTree = "<group>"; };
+		FE009A1B191A8AF10085DBF9 /* MyRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRequest.h; sourceTree = "<group>"; };
+		FE009A1C191A8AF10085DBF9 /* MyRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRequest.m; sourceTree = "<group>"; };
 		FE009A1E191A8CD70085DBF9 /* CheckNewApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckNewApp.h; sourceTree = "<group>"; };
 		FE009A1F191A8CD70085DBF9 /* CheckNewApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckNewApp.m; sourceTree = "<group>"; };
 		FE009A25191A8CD70085DBF9 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
@@ -198,7 +201,6 @@
 		FE009A9A191AA8250085DBF9 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		FE009A9C191AA8500085DBF9 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		FE009A9E191AA9E80085DBF9 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
-		FE1796041913129600599FC8 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		FE17960A1913173100599FC8 /* TCommonBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCommonBar.h; sourceTree = "<group>"; };
 		FE17960B1913173100599FC8 /* TCommonBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCommonBar.m; sourceTree = "<group>"; };
 		FE18CCF21913B2CF00D5E5F3 /* TNearParkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNearParkModel.h; sourceTree = "<group>"; };
@@ -313,6 +315,11 @@
 		FE2A9DB719137BA000931375 /* parkList_place_icon_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = parkList_place_icon_white.png; sourceTree = "<group>"; };
 		FE2A9DBD191385E400931375 /* TNearParkListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNearParkListCell.h; sourceTree = "<group>"; };
 		FE2A9DBE191385E400931375 /* TNearParkListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNearParkListCell.m; sourceTree = "<group>"; };
+		FE366840191F162B006102A1 /* TSearchParkingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSearchParkingCell.h; sourceTree = "<group>"; };
+		FE366841191F162B006102A1 /* TSearchParkingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSearchParkingCell.m; sourceTree = "<group>"; };
+		FE434241191F1CA9000F248D /* TSearchParkingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSearchParkingVC.h; sourceTree = "<group>"; };
+		FE434242191F1CA9000F248D /* TSearchParkingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSearchParkingVC.m; sourceTree = "<group>"; };
+		FE434244191F1DA0000F248D /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		FE702A25191AB7F5008096BC /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
 		FE702A27191AB7F5008096BC /* zbar-back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-back.png"; sourceTree = "<group>"; };
 		FE702A28191AB7F5008096BC /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
@@ -389,6 +396,8 @@
 		FED22F1C190E911200277079 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		FED22F24190E911200277079 /* TingCheBaoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TingCheBaoTests-Info.plist"; sourceTree = "<group>"; };
 		FED22F28190E911200277079 /* TingCheBaoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TingCheBaoTests.m; sourceTree = "<group>"; };
+		FEDC22C1191DDD2F00B8F312 /* TParkingNavigateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TParkingNavigateVC.h; sourceTree = "<group>"; };
+		FEDC22C2191DDD2F00B8F312 /* TParkingNavigateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TParkingNavigateVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -565,8 +574,8 @@
 		FE26A2CE190EAB6F00FBA651 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				FE009A1B191A8AF10085DBF9 /* MyFormDataRequest.h */,
-				FE009A1C191A8AF10085DBF9 /* MyFormDataRequest.m */,
+				FE009A1B191A8AF10085DBF9 /* MyRequest.h */,
+				FE009A1C191A8AF10085DBF9 /* MyRequest.m */,
 				FE009A1E191A8CD70085DBF9 /* CheckNewApp.h */,
 				FE009A1F191A8CD70085DBF9 /* CheckNewApp.m */,
 				FE009A25191A8CD70085DBF9 /* Utils.h */,
@@ -583,6 +592,8 @@
 			children = (
 				FE2A9DBD191385E400931375 /* TNearParkListCell.h */,
 				FE2A9DBE191385E400931375 /* TNearParkListCell.m */,
+				FE366840191F162B006102A1 /* TSearchParkingCell.h */,
+				FE366841191F162B006102A1 /* TSearchParkingCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -602,6 +613,10 @@
 				FE2A9D71191364A400931375 /* TVoiceSearchVC.m */,
 				FE2A9D731913650E00931375 /* TNearParksListVC.h */,
 				FE2A9D741913650E00931375 /* TNearParksListVC.m */,
+				FE434241191F1CA9000F248D /* TSearchParkingVC.h */,
+				FE434242191F1CA9000F248D /* TSearchParkingVC.m */,
+				FEDC22C1191DDD2F00B8F312 /* TParkingNavigateVC.h */,
+				FEDC22C2191DDD2F00B8F312 /* TParkingNavigateVC.m */,
 			);
 			path = ViewControl;
 			sourceTree = "<group>";
@@ -952,7 +967,7 @@
 				FE26A230190EAB6E00FBA651 /* Class */,
 				FED22F12190E911200277079 /* TAppDelegate.h */,
 				FED22F13190E911200277079 /* TAppDelegate.mm */,
-				FE1796041913129600599FC8 /* MainStoryboard.storyboard */,
+				FE434244191F1DA0000F248D /* MainStoryboard.storyboard */,
 				FED22F15190E911200277079 /* Images.xcassets */,
 				FED22F0A190E911200277079 /* Supporting Files */,
 			);
@@ -1102,8 +1117,8 @@
 				FE2A9DAF19136F7B00931375 /* voice_icon.png in Resources */,
 				FE2A9DB819137BA000931375 /* parkList_dot_icon.png in Resources */,
 				FE2A9DA119136F7B00931375 /* near_icon.png in Resources */,
+				FE434245191F1DA0000F248D /* MainStoryboard.storyboard in Resources */,
 				FE2A9D9919136F7B00931375 /* bar_bg_ios7.png in Resources */,
-				FE1796051913129600599FC8 /* MainStoryboard.storyboard in Resources */,
 				FE702A44191AB7F5008096BC /* zbar-samples.png in Resources */,
 				FE2A9DA419136F7B00931375 /* voice_bg.png in Resources */,
 				FE2A9D9719136F7B00931375 /* bar_bg.png in Resources */,
@@ -1144,12 +1159,14 @@
 				FE009A8C191A8FEC0085DBF9 /* UITableViewCell+FlatUI.m in Sources */,
 				FE7B1121191A7C8B003EC18B /* ASIAuthenticationDialog.m in Sources */,
 				FED22F10190E911200277079 /* main.m in Sources */,
+				FE366842191F162B006102A1 /* TSearchParkingCell.m in Sources */,
 				FE009A81191A8FEC0085DBF9 /* FUISwitch.m in Sources */,
+				FE434243191F1CA9000F248D /* TSearchParkingVC.m in Sources */,
 				FE2A9D72191364A400931375 /* TVoiceSearchVC.m in Sources */,
 				FE2A9DBF191385E400931375 /* TNearParkListCell.m in Sources */,
 				FE009A7D191A8FEC0085DBF9 /* FUIButton.m in Sources */,
 				FE26A2E4190EABC700FBA651 /* TAboutVC.m in Sources */,
-				FE009A1D191A8AF10085DBF9 /* MyFormDataRequest.m in Sources */,
+				FE009A1D191A8AF10085DBF9 /* MyRequest.m in Sources */,
 				FE009A84191A8FEC0085DBF9 /* UIFont+FlatUI.m in Sources */,
 				FE18CCF41913B2CF00D5E5F3 /* TNearParkModel.m in Sources */,
 				FE7B1125191A7C8B003EC18B /* ASIFormDataRequest.m in Sources */,
@@ -1167,6 +1184,7 @@
 				FE26A2DE190EAB9500FBA651 /* THomePageVC.m in Sources */,
 				FE009A8B191A8FEC0085DBF9 /* UITabBar+FlatUI.m in Sources */,
 				FE009A80191A8FEC0085DBF9 /* FUISegmentedControl.m in Sources */,
+				FEDC22C3191DDD2F00B8F312 /* TParkingNavigateVC.m in Sources */,
 				FE009A33191A8E390085DBF9 /* tooles.m in Sources */,
 				FE009A85191A8FEC0085DBF9 /* UIImage+FlatUI.m in Sources */,
 				FE2A9D751913650E00931375 /* TNearParksListVC.m in Sources */,
@@ -1296,7 +1314,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TingCheBao/Class/Lib",
@@ -1315,6 +1333,7 @@
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0A7F48E2-A419-40AF-885D-47082EF725C0";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1325,7 +1344,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TingCheBao/Class/Lib",
@@ -1344,6 +1363,7 @@
 				OTHER_CODE_SIGN_FLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0A7F48E2-A419-40AF-885D-47082EF725C0";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

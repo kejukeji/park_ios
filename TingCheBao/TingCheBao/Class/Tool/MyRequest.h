@@ -6,22 +6,23 @@
 //  Copyright (c) 2014年 ZHU. All rights reserved.
 //
 
-@class MyFormDataRequest;
+@class MyRequest;
 
-@protocol MyFormDataRequestDelegate <NSObject>
+@protocol MyRequestDelegate <NSObject>
 
-- (void)requestResult:(NSDictionary *)resultDict formDataRequest:(MyFormDataRequest *)request;
+- (void)requestResult:(NSDictionary *)resultDict formDataRequest:(MyRequest *)request;
+- (void)requestFail:(NSString *)msg;
 
 @end
 
 #import <Foundation/Foundation.h>
 #import "ASIFormDataRequest.h"
 
-@interface MyFormDataRequest : NSObject
+@interface MyRequest : NSObject
 
-@property (nonatomic, assign) id<MyFormDataRequestDelegate>delegae;
+@property (nonatomic, assign) id<MyRequestDelegate>delegae;
 
-@property (nonatomic, strong) ASIHTTPRequest      *sendRequest;
+@property (nonatomic, weak) __block ASIHTTPRequest      *sendRequest;
 @property (nonatomic, weak) __block ASIFormDataRequest  *formDataRequest;
 
 - (void)getUrl:(NSString *)urlString sendTime:(NSInteger)time;  //get sendRequest

@@ -26,7 +26,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yiN-aL-jzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-276" y="121"/>
+            <point key="canvasLocation" x="-276" y="134"/>
         </scene>
         <!--Find Parking SpaceVC - 找车位-->
         <scene sceneID="9a7-V0-gFw">
@@ -72,18 +72,21 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入目的地" minimumFontSize="17" id="p1n-Ni-3pg">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入目的地" clearsOnBeginEditing="YES" minimumFontSize="17" id="7so-pj-s2C">
                                 <rect key="frame" x="29" y="11" width="231" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ckm-hf-hKM">
-                                <rect key="frame" x="266" y="10" width="46" height="31"/>
+                                <rect key="frame" x="13" y="10" width="299" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="7h3-WU-z4E" kind="push" identifier="TSearchParkingVC" id="VZH-EK-eP2"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="xkL-St-uS6">
                                 <rect key="frame" x="8" y="103" width="304" height="99"/>
@@ -92,7 +95,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="9Zf-82-f3L" kind="push" id="Im8-lb-MbQ"/>
+                                    <segue destination="9Zf-82-f3L" kind="push" identifier="TNearParksListVC" id="Im8-lb-MbQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="8Wv-TC-ZW2">
@@ -102,7 +105,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Rcg-iW-Ws4" kind="push" id="2dN-Kw-MvW"/>
+                                    <segue destination="Rcg-iW-Ws4" kind="push" identifier="TVoiceSearchVC" id="2dN-Kw-MvW"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -149,7 +152,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="OdO-x9-2eL" kind="push" id="zKp-o4-lGy"/>
+                                            <segue destination="OdO-x9-2eL" kind="push" identifier="TFindParkingSpaceVC" id="zKp-o4-lGy"/>
                                         </connections>
                                     </button>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="home_findCar_icon.png" id="g9M-wa-Gxm">
@@ -202,13 +205,16 @@
                                 <color key="textColor" red="0.90196084980000002" green="0.42352944609999998" blue="0.16862745579999999" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您要查找的位置" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cEZ-Bd-82Z">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="您要查找的位置" textAlignment="center" minimumFontSize="17" id="VzN-qA-amF">
                                 <rect key="frame" x="20" y="78" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.90196084980000002" green="0.42352944609999998" blue="0.16862745579999999" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Rcg-iW-Ws4" id="EDO-0O-Oyk"/>
+                                </connections>
+                            </textField>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="hFK-Cn-30l">
                                 <rect key="frame" x="25" y="263" width="69" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
@@ -226,8 +232,17 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="gotoNearPark:" destination="Rcg-iW-Ws4" eventType="touchUpInside" id="RJm-md-6bz"/>
-                                    <segue destination="9Zf-82-f3L" kind="push" id="dH2-Y5-33L"/>
+                                    <segue destination="7h3-WU-z4E" kind="push" identifier="TSearchParkingVC" id="lpc-Yu-us1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lwL-xa-GBb">
+                                <rect key="frame" x="0.0" y="398" width="316" height="106"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startVoice:" destination="Rcg-iW-Ws4" eventType="touchUpInside" id="r5R-4H-Nxj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -237,7 +252,7 @@
                         <barButtonItem key="backBarButtonItem" title="返回" id="lTS-Sf-SAL"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="contenLabel" destination="cEZ-Bd-82Z" id="0E0-R8-Tu9"/>
+                        <outlet property="contentTF" destination="VzN-qA-amF" id="oCe-k0-9k3"/>
                         <outlet property="firstLabel" destination="DcH-Vt-2wi" id="30v-X2-YAI"/>
                         <outlet property="noBtn" destination="hFK-Cn-30l" id="nKp-RS-j32"/>
                         <outlet property="yesBtn" destination="hmc-cT-FUZ" id="3Ne-ax-42Y"/>
@@ -245,7 +260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E8W-qZ-t89" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1077" y="533"/>
+            <point key="canvasLocation" x="1017" y="528"/>
         </scene>
         <!--Near Parks ListVC - 附近停车场-->
         <scene sceneID="s5w-4h-0Ap">
@@ -390,7 +405,7 @@
                                             <outlet property="nameLabel" destination="EKp-oX-AjY" id="ekv-E5-Rvh"/>
                                             <outlet property="priceLabel" destination="5Zu-2Y-Ria" id="erH-vr-aBT"/>
                                             <outlet property="rangeLabel" destination="3ua-lc-Ji6" id="rgU-Yh-6hU"/>
-                                            <segue destination="aLa-i9-d4M" kind="push" id="IIL-LW-Ld9"/>
+                                            <segue destination="aLa-i9-d4M" kind="modal" identifier="TParkingNavigateVC" modalTransitionStyle="flipHorizontal" id="aai-6b-LDl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -407,19 +422,20 @@
                         <barButtonItem key="backBarButtonItem" title="返回" id="BnL-lD-Y08"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addressLabel" destination="Mwy-PB-qrW" id="cHM-Rw-qhV"/>
                         <outlet property="parkListTV" destination="DA7-Kx-nOu" id="he5-3R-mHJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYd-bZ-N40" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1077" y="-120"/>
+            <point key="canvasLocation" x="1897" y="134"/>
         </scene>
-        <!--View Controller - 停车场-->
+        <!--Parking NavigateVC - 停车场-->
         <scene sceneID="X5m-OK-FW4">
             <objects>
-                <viewController id="aLa-i9-d4M" sceneMemberID="viewController">
+                <viewController id="aLa-i9-d4M" customClass="TParkingNavigateVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="blO-ys-myO">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -429,7 +445,76 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Hk-49-mJs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1482" y="-113"/>
+            <point key="canvasLocation" x="2333" y="7"/>
+        </scene>
+        <!--Search ParkingVC - 搜索车位-->
+        <scene sceneID="rqb-cc-420">
+            <objects>
+                <viewController id="7h3-WU-z4E" customClass="TSearchParkingVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZhP-tj-wh8">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="searchBar_bg.png" id="SBI-0e-Vof">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入目的地" minimumFontSize="17" id="Hu9-Kh-1na">
+                                <rect key="frame" x="29" y="11" width="231" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="7h3-WU-z4E" id="Iso-iF-TVV"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pCG-a1-7cS">
+                                <rect key="frame" x="266" y="10" width="46" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchParking:" destination="7h3-WU-z4E" eventType="touchUpInside" id="LqS-vM-eXW"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9Z8-6S-pJI">
+                                <rect key="frame" x="0.0" y="59" width="320" height="445"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="listCell" id="yMz-QM-ueI">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yMz-QM-ueI" id="SHE-a8-kZ8">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="aLa-i9-d4M" kind="modal" modalTransitionStyle="flipHorizontal" id="7Ik-yi-Esb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="7h3-WU-z4E" id="a5b-pb-802"/>
+                                    <outlet property="delegate" destination="7h3-WU-z4E" id="5lb-sm-3XR"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94901967050000002" green="0.94901967050000002" blue="0.94901967050000002" alpha="1" colorSpace="deviceRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="搜索车位" id="DhG-G8-6pf" customClass="TCommonItem">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="tSV-vg-uTN"/>
+                    </navigationItem>
+                    <size key="freeformSize" width="320" height="568"/>
+                    <connections>
+                        <outlet property="searchTF" destination="Hu9-Kh-1na" id="slH-hn-3QP"/>
+                        <outlet property="searchTV" destination="9Z8-6S-pJI" id="CKQ-5h-OwD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b0U-7R-JEB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1399" y="-246"/>
         </scene>
     </scenes>
     <resources>
@@ -459,6 +544,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Im8-lb-MbQ"/>
+        <segue reference="lpc-Yu-us1"/>
+        <segue reference="7Ik-yi-Esb"/>
     </inferredMetricsTieBreakers>
 </document>

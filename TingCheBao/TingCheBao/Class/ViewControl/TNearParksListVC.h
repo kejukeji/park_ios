@@ -11,5 +11,9 @@
 
 @interface TNearParksListVC : UIViewController
 
+@property (strong, nonatomic) IBOutlet UILabel *addressLabel;
+@property (nonatomic, copy) NSString *urlStr;
+
+- (void)requestNearParksData:(NSString *)urlString;
 
 @end

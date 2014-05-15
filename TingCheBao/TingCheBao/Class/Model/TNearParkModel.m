@@ -24,10 +24,18 @@
 {
     if (self = [super init]) {
         
-        
-            
-        
-        
+        address = [NSString stringWithFormat:@"%@",[dic objectForKey:@"address"]];
+        carbarnLast = [NSString stringWithFormat:@"%@",[dic objectForKey:@"carbarnLast"]];
+        carbarnTotal = [NSString stringWithFormat:@"%@",[dic objectForKey:@"carbarnTotal"]];
+        NSArray *cartEntrances = [dic objectForKey:@"cartEntrances"];
+        for (NSDictionary *entrancesDict in cartEntrances) {
+            latitude = [NSString stringWithFormat:@"%@",[entrancesDict objectForKey:@"latitude"]];
+            longitude = [NSString stringWithFormat:@"%@",[entrancesDict objectForKey:@"longitude"]];
+        }
+        detial = [NSString stringWithFormat:@"%@",[dic objectForKey:@"detial"]];
+        parkid = [NSString stringWithFormat:@"%@",[dic objectForKey:@"id"]];
+        name = [NSString stringWithFormat:@"%@",[dic objectForKey:@"name"]];
+        price = [NSString stringWithFormat:@"%@元/小时",[dic objectForKey:@"price"]];
     }
     
     return self;

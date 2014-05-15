@@ -7,6 +7,8 @@
 //
 
 #import "TAppDelegate.h"
+#import "BNaviSoundManager.h"
+#import "BNCoreServices.h"
 
 @implementation TAppDelegate
 
@@ -18,6 +20,12 @@
 	if (!ret) {
 		NSLog(@"manager start failed!");
 	}
+    
+    // 初始化导航SDK引擎
+    [BNCoreServices_Instance initServices:@"yeN9Z1zcQhzn7mtNLb3nC6kK"];
+    
+    //开启引擎，传入默认的TTS类
+    [BNCoreServices_Instance startServicesAsyn:nil fail:nil SoundService:[BNaviSoundManager getInstance]];
     
 //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 //    // Override point for customization after application launch.

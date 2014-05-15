@@ -18,6 +18,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *emptyPlaceLabel;
 
 - (void)setCellContent:(TNearParkModel *)model;
-- (void)setCellContent;
 
 @end

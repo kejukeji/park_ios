@@ -7,12 +7,17 @@
 //
 
 #import "TFindParkingSpaceVC.h"
+#import "TNearParksListVC.h"
+#import "TVoiceSearchVC.h"
+#import "TSearchParkingVC.h"
 
 @interface TFindParkingSpaceVC () 
 
 @end
 
 @implementation TFindParkingSpaceVC
+
+@synthesize currentLocation;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,6 +39,8 @@
 //        self.navigationController.edgesForExtendedLayout = UIRectEdgeNone;
 //        
 //    }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,7 +49,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -50,8 +57,17 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%lf",currentLocation.coordinate.latitude] forKey:@"latitude"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%lf",currentLocation.coordinate.longitude] forKey:@"longitude"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    if ([segue.identifier isEqualToString:@"TNearParksListVC"]) {
+        TNearParksListVC *nearParksListVC = segue.destinationViewController;
+        NSString *url = [NSString stringWithFormat:@"%@ssbusy/carbarn/latitude-longitude?latitude=%f&longitude=%f", TCB_URL,currentLocation.coordinate.latitude, currentLocation.coordinate.longitude];
+        [nearParksListVC requestNearParksData:url];
+    }
 }
-*/
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {

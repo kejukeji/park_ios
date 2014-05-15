@@ -6,10 +6,10 @@
 //  Copyright (c) 2014年 ZHU. All rights reserved.
 //
 
-#import "MyFormDataRequest.h"
+#import "MyRequest.h"
 #import "tooles.h"
 
-@implementation MyFormDataRequest
+@implementation MyRequest
 
 @synthesize delegae;
 @synthesize sendRequest;
@@ -17,13 +17,50 @@
 
 - (void)getUrl:(NSString *)urlString sendTime:(NSInteger)time  //get sendRequest
 {
+    NSLog(@"url == %@",urlString);
+
+    if (sendRequest != nil) {
+        [sendRequest clearDelegatesAndCancel];
+        sendRequest = nil;
+    }
     
+    NSURL * url=[NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    sendRequest = [ASIHTTPRequest requestWithURL:url];
+    [sendRequest setTimeOutSeconds:30];
+    [sendRequest setDelegate: self];
+    [sendRequest startAsynchronous];
+                   
+    [sendRequest setCompletionBlock:^{
+        NSError *error = nil;
+        if (error) {
+            NSLog(@"error = %@",error);
+            return ;
+        }
+        
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[sendRequest responseData] options:kNilOptions error:&error];
+        //        NSLog(@"result dic == %@",dic);
+        if ([[dic objectForKey:@"status"] intValue] != 400) {
+            NSLog(@"success");
+            
+            [delegae requestResult:dic formDataRequest:self];
+        }
+        else
+        {
+            [delegae requestFail:[dic objectForKey:@"errorMessage"]];
+        }
+        
+    }];
+    
+    [formDataRequest setFailedBlock:^{
+        [tooles MsgBox:@"请检查网络！！！"];
+    }];
 }
 
 - (void)postUrl:(NSString *)urlString addPostValueKey:(NSDictionary *)valueDict addFileKey:(NSDictionary *)fileDict sendTime:(NSInteger)time  //post sendRequest
 {
     NSLog(@"url == %@",urlString);
     if (formDataRequest != nil) {
+        [formDataRequest clearDelegatesAndCancel];
         formDataRequest = nil;
     }
     
@@ -60,15 +97,13 @@
         
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[formDataRequest responseData] options:kNilOptions error:&error];
 //        NSLog(@"result dic == %@",dic);
-        if ([[dic objectForKey:@"status"] intValue] != 10) {
-            NSLog(@"success");
+        if ([[dic objectForKey:@"status"] intValue] != 400) {
 
             [delegae requestResult:dic formDataRequest:self];
         }
         else
         {
-            [[NSNotificationCenter  defaultCenter]postNotificationName:@"goToLoginVC" object:nil];
-            [tooles MsgBox:[dic objectForKey:@"msg"]];
+            [delegae requestFail:[dic objectForKey:@"errorMessage"]];
         }
         
     }];

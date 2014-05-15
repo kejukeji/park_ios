@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface TFindParkingSpaceVC : UIViewController
+
+@property (nonatomic, strong) CLLocation *currentLocation;
 
 @end
