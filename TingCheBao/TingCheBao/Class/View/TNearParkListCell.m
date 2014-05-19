@@ -36,18 +36,24 @@
 {
     [self.nameLabel setText:model.name];
     [self.addressLabel setText:model.address];
-    [self.priceLabel setText:model.price];
     
-    NSString *priceStr = [NSString stringWithFormat:@"空车位%@个",model.carbarnLast];
-    if (!noiOS6) {
-        NSDictionary *subStrAttribute1 = @{NSForegroundColorAttributeName: [UIColor blackColor]};
-        NSDictionary *subStrAttribute2 = @{NSForegroundColorAttributeName: [UIColor redColor]};
-        NSMutableAttributedString *attributdText = [[NSMutableAttributedString alloc] initWithString:priceStr];
-        [attributdText setAttributes:subStrAttribute1 range:NSMakeRange(0, 3)];
-        [attributdText setAttributes:subStrAttribute2 range:NSMakeRange(3, priceStr.length - 3)];
-        [self.emptyPlaceLabel setAttributedText:attributdText];
+    NSInteger emptyNum = [model.last intValue];
+    if (emptyNum > 0) {
+        NSString *emptyStr = [NSString stringWithFormat:@"空车位%@个",model.last];
+        if (!noiOS6) {
+            NSDictionary *subStrAttribute1 = @{NSForegroundColorAttributeName: [UIColor blackColor]};
+            NSDictionary *subStrAttribute2 = @{NSForegroundColorAttributeName: [UIColor redColor]};
+            NSMutableAttributedString *attributdText = [[NSMutableAttributedString alloc] initWithString:emptyStr];
+            [attributdText setAttributes:subStrAttribute1 range:NSMakeRange(0, 3)];
+            [attributdText setAttributes:subStrAttribute2 range:NSMakeRange(3, emptyStr.length - 3)];
+            [self.emptyPlaceLabel setAttributedText:attributdText];
+        } else {
+            [self.emptyPlaceLabel setText:emptyStr];
+        }
+    } else if (emptyNum == 0) {
+        [self.emptyPlaceLabel setText:@"无空车位"];
     } else {
-        [self.emptyPlaceLabel setText:priceStr];
+        [self.emptyPlaceLabel setText:@""];
     }
     
     //计算距离
@@ -55,8 +61,8 @@
     
     double locationLatitude = [[[NSUserDefaults standardUserDefaults] stringForKey:@"latitude"] doubleValue];
     
-    double longitude = [model.longitude doubleValue];
-    double latitude = [model.latitude doubleValue];
+    longitude = [model.longitude doubleValue];
+    latitude = [model.latitude doubleValue];
     
     CLLocation *newLocation = [[CLLocation alloc] initWithLatitude:locationLatitude longitude:locationLongitude];
     CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
@@ -81,6 +87,11 @@
     } else {
         [self.rangeLabel setText:rangeStr];
     }
+}
+
+- (IBAction)gotoNavigation:(UIButton *)sender
+{
+    [self.delegate gotoNavigationLongitude:longitude latitude:latitude];
 }
 
 @end

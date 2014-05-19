@@ -9,6 +9,7 @@
 #import "TAppDelegate.h"
 #import "BNaviSoundManager.h"
 #import "BNCoreServices.h"
+#import "MobClick.h"
 
 @implementation TAppDelegate
 
@@ -27,10 +28,20 @@
     //开启引擎，传入默认的TTS类
     [BNCoreServices_Instance startServicesAsyn:nil fail:nil SoundService:[BNaviSoundManager getInstance]];
     
+    [MobClick setLogEnabled:YES];  // 打开友盟sdk调试，注意Release发布时需要注释掉此行,减少io消耗
+    [MobClick setAppVersion:XcodeAppVersion]; //参数为NSString * 类型,自定义app版本信息，如果不设置，默认从CFBundleVersion里取
+
+    [MobClick startWithAppkey:UM_KEY reportPolicy:(ReportPolicy) REALTIME channelId:nil];
+    [MobClick updateOnlineConfig];  //在线参数配置
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onlineConfigCallBack:) name:UMOnlineConfigDidFinishedNotification object:nil];
+
 //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 //    // Override point for customization after application launch.
 //    self.window.backgroundColor = [UIColor whiteColor];
+//
+//    
 //    [self.window makeKeyAndVisible];
+        
     return YES;
 }
 
@@ -80,6 +91,11 @@
     else {
         NSLog(@"onGetPermissionState %d",iError);
     }
+}
+
+- (void)onlineConfigCallBack:(NSNotification *)note {
+    
+    NSLog(@"online config has fininshed and note = %@", note.userInfo);
 }
 
 @end

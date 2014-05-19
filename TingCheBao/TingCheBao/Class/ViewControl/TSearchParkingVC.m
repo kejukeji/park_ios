@@ -8,16 +8,20 @@
 
 #import "TSearchParkingVC.h"
 #import "BMapKit.h"
-#import "TParkingNavigateVC.h"
+#import "TNearParksListVC.h"
+#import "PullingRefreshTableView.h"
 
-@interface TSearchParkingVC () <BMKSearchDelegate>
+@interface TSearchParkingVC () <BMKSearchDelegate, UITextFieldDelegate>
 {
-    BMKSearch  *search;
+    BMKSearch      *search;
     NSMutableArray *searchDatas;
+    BMKAddrInfo    *addrInfo;
+    NSString       *cityName;
 }
 
 @property (strong, nonatomic) IBOutlet UITextField *searchTF;
-@property (strong, nonatomic) IBOutlet UITableView *searchTV;
+
+@property (weak, nonatomic) IBOutlet UITableView *searchTV;
 
 @end
 
@@ -40,6 +44,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [searchTF setDelegate:self];
+    
     [searchTF setText:searchStr];
     NSLog(@"searchTF.text == %@",searchTF.text);
 //    [searchTF becomeFirstResponder];
@@ -47,15 +54,25 @@
     searchDatas = [NSMutableArray arrayWithCapacity:0];
 
     search = [[BMKSearch alloc] init];
-    search.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
-    if (searchTF.text.length > 0) {
-        [search poiSearchInCity:@"上海" withKey:searchTF.text pageIndex:1];
+    
+    cityName = [[NSUserDefaults standardUserDefaults] stringForKey:@"currentCityName"];
+
+    if (searchStr.length > 0) {
+        [search suggestionSearch:searchStr inCity:cityName];
+    } else {
+        NSMutableArray *historys = [[NSUserDefaults standardUserDefaults] mutableArrayValueForKey:@"searchHistory"];
+        if (historys > 0) {
+            for (int i = historys.count - 1; i < historys.count; i--) {
+                NSString *str = historys[i];
+                [searchDatas addObject:str];
+            }
+        }
     }
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    
+    search.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -72,7 +89,10 @@
 {
     [self.view endEditing:YES];
 
-    [search poiSearchInCity:@"上海" withKey:searchTF.text pageIndex:1];
+    if (searchDatas.count > 0) {
+        [searchDatas removeAllObjects];
+    }
+    [search suggestionSearch:searchTF.text inCity:cityName];
 }
 
 #pragma mark - Navigation
@@ -85,30 +105,32 @@
     
     [self.view endEditing:YES];
     
-    NSIndexPath *path = [searchTV indexPathForSelectedRow];
-    BMKPoiInfo *info = [searchDatas objectAtIndex:path.row];
-    double startLatitude = [[[NSUserDefaults standardUserDefaults] stringForKey:@"latitude"] doubleValue];
-    double startLongitude = [[[NSUserDefaults standardUserDefaults] stringForKey:@"longitude"] doubleValue];
-    double endLatitude = info.pt.latitude;
-    double endLongitude = info.pt.longitude;
+//    NSIndexPath *path = [searchTV indexPathForSelectedRow];
     
-    if ([segue.identifier isEqualToString:@"TParkingNavigateVC"]) {
-        TParkingNavigateVC *parkingNavigateVC = segue.destinationViewController;
-        [parkingNavigateVC setStartLatitude:startLatitude];
-        [parkingNavigateVC setStartLongitude:startLongitude];
-        [parkingNavigateVC setEndLatitude:endLatitude];
-        [parkingNavigateVC setEndLongitude:endLongitude];
+//    BMKPoiInfo *info = [searchDatas objectAtIndex:path.row];
+    
+    double gotoAtitude = addrInfo.geoPt.latitude;
+    double gotoLongitude = addrInfo.geoPt.longitude;
+    
+    if ([segue.identifier isEqualToString:@"toTNearParksListVC"]) {
+        TNearParksListVC *nearParksListVC = segue.destinationViewController;
+        NSString *url = [NSString stringWithFormat:@"%@park/v1/carbarn/latitude-longitude?latitude=%f&longitude=%f", TCB_URL,gotoAtitude, gotoLongitude];
+        [nearParksListVC requestNearParksData:url];
     }
 }
 
-- (void)onGetPoiResult:(BMKSearch*)searcher result:(NSArray*)poiResultList searchType:(int)type errorCode:(int)error;
+- (void)onGetSuggestionResult:(BMKSearch*)searcher result:(BMKSuggestionResult*)result errorCode:(int)error
 {
-    for (BMKPoiResult *result in poiResultList) {
-        for (BMKPoiInfo *info in result.poiInfoList) {
-            [searchDatas addObject:info];
-        }
+    for (NSString *districtList in result.keyList) {
+        [searchDatas addObject:districtList];
     }
     [searchTV reloadData];
+}
+
+- (void)onGetAddrResult:(BMKSearch*)searcher result:(BMKAddrInfo*)result errorCode:(int)error;
+{
+	addrInfo = result;
+    [self performSegueWithIdentifier:@"toTNearParksListVC" sender:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -126,9 +148,9 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    BMKPoiInfo *info = [searchDatas objectAtIndex:indexPath.row];
+    NSString *address = [searchDatas objectAtIndex:indexPath.row];
     
-    [cell.textLabel setText:info.address];
+    [cell.textLabel setText:address];
     
     return cell;
 }
@@ -136,6 +158,27 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSString *address = [searchDatas objectAtIndex:indexPath.row];
+    
+    NSMutableArray *historys = [[NSUserDefaults standardUserDefaults] mutableArrayValueForKey:@"searchHistory"];
+    
+    if (historys.count == 0) {
+        [historys addObject:address];
+    } else {
+        for (int i = 0; i < historys.count; i++) {
+            NSString *str = historys[i];
+            if (![address isEqualToString:str] && i == historys.count - 1) { //不同的增加
+                [historys addObject:address];
+            }
+        }
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:historys forKey:@"searchHistory"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [search geocode:address withCity:cityName];
+
 }
 
 @end

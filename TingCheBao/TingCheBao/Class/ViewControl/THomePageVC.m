@@ -16,7 +16,7 @@
     BMKSearch  *search;
 }
 
-@property (nonatomic, strong) BMKMapView *mapView;;
+@property (nonatomic, strong) BMKMapView *mapView;
 
 @end
 

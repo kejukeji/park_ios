@@ -11,36 +11,44 @@
 @implementation TNearParkModel
 
 @synthesize address;
-@synthesize carbarnLast;
-@synthesize carbarnTotal;
+@synthesize distance;
+@synthesize cartEntrancesid;
 @synthesize latitude;
 @synthesize longitude;
-@synthesize detial;
+@synthesize dayPrice;
 @synthesize parkid;
+@synthesize last;
 @synthesize name;
-@synthesize price;
+@synthesize nightPrice;
+
+@synthesize tel;
+@synthesize total;
+@synthesize type;
 
 - (TNearParkModel *)initWithDictionary:(NSDictionary *)dic
 {
     if (self = [super init]) {
         
         address = [NSString stringWithFormat:@"%@",[dic objectForKey:@"address"]];
-        carbarnLast = [NSString stringWithFormat:@"%@",[dic objectForKey:@"carbarnLast"]];
-        carbarnTotal = [NSString stringWithFormat:@"%@",[dic objectForKey:@"carbarnTotal"]];
-        NSArray *cartEntrances = [dic objectForKey:@"cartEntrances"];
-        for (NSDictionary *entrancesDict in cartEntrances) {
-            latitude = [NSString stringWithFormat:@"%@",[entrancesDict objectForKey:@"latitude"]];
-            longitude = [NSString stringWithFormat:@"%@",[entrancesDict objectForKey:@"longitude"]];
-        }
-        detial = [NSString stringWithFormat:@"%@",[dic objectForKey:@"detial"]];
+        dayPrice = [NSString stringWithFormat:@"%@",[dic objectForKey:@"dayPrice"]];
+        last = [NSString stringWithFormat:@"%@", [dic objectForKey:@"last"]];
         parkid = [NSString stringWithFormat:@"%@",[dic objectForKey:@"id"]];
         name = [NSString stringWithFormat:@"%@",[dic objectForKey:@"name"]];
-        price = [NSString stringWithFormat:@"%@元/小时",[dic objectForKey:@"price"]];
+        nightPrice = [NSString stringWithFormat:@"%@",[dic objectForKey:@"nightPrice"]];
+        tel = [NSString stringWithFormat:@"%@",[dic objectForKey:@"tel"]];
+        total = [NSString stringWithFormat:@"%@",[dic objectForKey:@"total"]];
+        type = [NSString stringWithFormat:@"%@",[dic objectForKey:@"type"]];
+        NSArray *cartEntrances = [dic objectForKey:@"cartEntrances"];
+        for (NSDictionary *dict in cartEntrances) {
+            distance = [dict objectForKey:@"distance"];
+            latitude = [dict objectForKey:@"latitude"];
+            longitude = [dict objectForKey:@"longitude"];
+            cartEntrancesid = [dict objectForKey:@"id"];
+        }
     }
     
     return self;
 
 }
-
 
 @end

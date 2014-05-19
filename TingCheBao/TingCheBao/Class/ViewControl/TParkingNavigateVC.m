@@ -33,11 +33,18 @@
     return self;
 }
 
+- (void)onExitNaviUI
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onExitNaviUI) name:@"onExitNaviUI" object:nil];
+
     _naviType = BN_NaviTypeReal;
     [self startNavi];
 
@@ -47,6 +54,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"onExitNaviUI" object:nil];
 }
 
 /*
@@ -66,8 +78,8 @@
     //起点 传入的是原始的经纬度坐标，若使用的是百度地图坐标，可以使用BNTools类进行坐标转化
     BNRoutePlanNode *startNode = [[BNRoutePlanNode alloc] init];
     startNode.pos = [[BNPosition alloc] init];
-    startNode.pos.x = 116.30142;
-    startNode.pos.y = 40.05087;
+    startNode.pos.x = startLongitude;
+    startNode.pos.y = startLatitude;
     [nodesArray addObject:startNode];
     
     
@@ -82,20 +94,20 @@
     //终点
     BNRoutePlanNode *endNode = [[BNRoutePlanNode alloc] init];
     endNode.pos = [[BNPosition alloc] init];
-    endNode.pos.x = 116.39750;
-    endNode.pos.y = 39.90882;
+    endNode.pos.x = endLongitude;
+    endNode.pos.y = endLatitude;
     [nodesArray addObject:endNode];
     
     [BNCoreServices_RoutePlan startNaviRoutePlan:BNRoutePlanMode_Recommend naviNodes:nodesArray time:nil delegete:self userInfo:nil];
-    
 }
 
 #pragma mark - BNNaviRoutePlanDelegate
 //算路成功回调
--(void)routePlanDidFinished:(NSDictionary *)userInfo
+- (void)routePlanDidFinished:(NSDictionary *)userInfo
 {
     NSLog(@"算路成功");
-    
+    NSLog(@"userInfo === %@",userInfo);
+
     //路径规划成功，开始导航
     [BNCoreServices_UI showNaviUI:_naviType delegete:self isNeedLandscape:YES];
 }
@@ -105,27 +117,64 @@
 {
     NSLog(@"算路失败");
     
+    NSString *msg = @"";
+    
     if ([error code] == BNRoutePlanError_LocationFailed) {
         NSLog(@"获取地理位置失败");
+        msg = @"获取地理位置失败";
     }
+    
+    else if ([error code] == BNRoutePlanError_RoutePlanFailed)
+    {
+        NSLog(@"无法发起算路");
+        msg = @"无法发起算路";
+
+    }
+    
     else if ([error code] == BNRoutePlanError_LocationServiceClosed)
     {
         NSLog(@"定位服务未开启");
+        msg = @"定位服务未开启";
     }
     
-    [self dismissModalViewControllerAnimated:YES];
+    else if ([error code] == BNRoutePlanError_NodesTooNear)
+    {
+        NSLog(@"节点之间距离太近");
+        msg = @"节点之间距离太近";
+
+    }
+    
+    else if ([error code] == BNRoutePlanError_NodesInputError)
+    {
+        NSLog(@"节点输入有误");
+        msg = @"节点输入有误";
+
+    }
+    
+    else if ([error code] == BNRoutePlanError_WaitAMoment)
+    {
+        NSLog(@"上次算路取消了，需要等一会");
+        msg = @"上次算路取消了，需要等一会";
+    }
+    
+    NSLog(@"error code == %i",[error code]);
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"算路失败" message:msg delegate:self cancelButtonTitle:@"退出" otherButtonTitles:@"重新计算", nil];
+    [alert show];
 }
 
 //算路取消回调
--(void)routePlanDidUserCanceled:(NSDictionary*)userInfo {
+- (void)routePlanDidUserCanceled:(NSDictionary*)userInfo {
     NSLog(@"算路取消");
+    NSLog(@"userInfo === %@",userInfo);
+    
     [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark - BNNaviUIManagerDelegate
 
 //退出导航回调
--(void)onExitNaviUI:(NSDictionary*)extraInfo
+- (void)onExitNaviUI:(NSDictionary*)extraInfo
 {
     NSLog(@"退出导航");
     [self dismissModalViewControllerAnimated:YES];
@@ -135,6 +184,15 @@
 - (void)onExitexitDeclarationUI:(NSDictionary*)extraInfo
 {
     NSLog(@"退出导航声明页面");
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [self dismissModalViewControllerAnimated:YES];
+    } else {
+        [self startNavi];
+    }
 }
 
 @end
