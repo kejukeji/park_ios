@@ -199,4 +199,16 @@
     NSLog(@"error == %@",error);
 }
 
+/** 播放进度回调
+ 
+ @param progress 播放进度，0-100
+ */
+
+- (void) onSpeakProgress:(int) progress
+{
+    if (progress == 100) {  //播放完毕后停止
+        _iFlySpeechSynthesizer = nil;
+    }
+}
+
 @end

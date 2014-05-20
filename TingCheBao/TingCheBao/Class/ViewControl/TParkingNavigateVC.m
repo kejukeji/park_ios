@@ -9,8 +9,10 @@
 #import "TParkingNavigateVC.h"
 #import "BNCoreServices.h"
 
-
 @interface TParkingNavigateVC () <BNNaviRoutePlanDelegate, BNNaviUIManagerDelegate,UINavigationControllerDelegate>
+{
+    UIView *subview;
+}
 
 //导航类型，分为模拟导航和真实导航
 @property (assign, nonatomic) BN_NaviType naviType;
@@ -110,8 +112,24 @@
 
     //路径规划成功，开始导航
     [BNCoreServices_UI showNaviUI:_naviType delegete:self isNeedLandscape:YES];
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    subview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    [btn setFrame:CGRectMake(0, 0, 320, 50)];
+    [btn addTarget:self action:@selector(removeView) forControlEvents:UIControlEventTouchUpInside];
+    [subview addSubview:btn];
+    
+    [subview setBackgroundColor:[UIColor redColor]];
+//    [self.view addSubview:view];
+    [subview setAlpha:0.9];
+    [[UIApplication sharedApplication].keyWindow addSubview:subview];
+
 }
 
+- (void)removeView
+{
+    [subview removeFromSuperview];
+}
 //算路失败回调
 - (void)routePlanDidFailedWithError:(NSError *)error andUserInfo:(NSDictionary *)userInfo
 {

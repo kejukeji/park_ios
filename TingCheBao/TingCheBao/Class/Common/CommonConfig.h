@@ -15,8 +15,8 @@
 #define noiOS6 ((floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_5_1)?YES:NO)
 
 #define TCB_URL @"http://121.199.251.166/"
-#define BM_KEY @"yeN9Z1zcQhzn7mtNLb3nC6kK"
+#define BM_KEY @"edMyXrVdItOfqBDLjNoGRBQT"
 #define XF_APPID @"535e66db"
-#define UM_KEY @"537780d056240b54ce04aac9"
+#define UM_KEY @"537830a256240b8c33014c56"
 
 #endif
